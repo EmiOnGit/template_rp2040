@@ -20,7 +20,6 @@ use bsp::hal::{
 
 #[entry]
 fn main() -> ! {
-    // info!("Program start");
     let mut pac = pac::Peripherals::take().unwrap();
     let core = pac::CorePeripherals::take().unwrap();
     let mut watchdog = Watchdog::new(pac.WATCHDOG);
@@ -52,15 +51,13 @@ fn main() -> ! {
     let mut led_pin = pins.gpio20.into_push_pull_output();
 
     loop {
-        // info!("on!");
         led_pin.set_high().unwrap();
         delay.delay_ms(500);
-        // info!("off!");
         led_pin.set_low().unwrap();
         delay.delay_ms(500);
     }
 }
 #[panic_handler]
-fn panic_handle(info: &PanicInfo) -> ! {
+fn panic_handle(_info: &PanicInfo) -> ! {
     loop {}
 }
