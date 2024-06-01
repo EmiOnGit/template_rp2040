@@ -1,5 +1,10 @@
 #![no_std]
 #![no_main]
+#![deny(clippy::all)]
+#![warn(clippy::pedantic)]
+#![warn(clippy::restriction)]
+#![warn(clippy::nursery)]
+#![warn(clippy::cargo)]
 // we use the panic handler defined in lib.rs
 #[allow(unused_imports)]
 use template_rp2040::panic as _;
@@ -23,10 +28,8 @@ fn main() -> ! {
     let mut watchdog = Watchdog::new(pac.WATCHDOG);
     let sio = Sio::new(pac.SIO);
 
-    // External high-speed crystal on the pico board is 12Mhz
-    let external_xtal_freq_hz = 12_000_000u32;
     let clocks = init_clocks_and_plls(
-        external_xtal_freq_hz,
+        rp_pico::XOSC_CRYSTAL_FREQ,
         pac.XOSC,
         pac.CLOCKS,
         pac.PLL_SYS,
@@ -34,7 +37,6 @@ fn main() -> ! {
         &mut pac.RESETS,
         &mut watchdog,
     )
-    .ok()
     .unwrap();
 
     let mut delay = cortex_m::delay::Delay::new(core.SYST, clocks.system_clock.freq().to_Hz());
@@ -45,8 +47,13 @@ fn main() -> ! {
         &mut pac.RESETS,
     );
 
+    // Use a gpio, which has a led connected!
+    // If you have a pico (H) you can instead use the onboard led by specifying gpio 25.
+    // If you have a pico W(H), the onboard led is connected to the wifi which and is not easily accessable.
+    // Therefore you have to connect your own led on any gpio :)
     let mut led_pin = pins.gpio20.into_push_pull_output();
 
+    // let the led blink!
     loop {
         led_pin.set_high().unwrap();
         delay.delay_ms(500);
