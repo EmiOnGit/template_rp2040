@@ -1,0 +1,51 @@
+[package]
+name = "temp"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+rp-pico = "0.9"
+cortex-m = "0.7.3"
+cortex-m-rt = "0.7.0"
+embedded-time = "0.12.0"
+panic-probe = { version = "0.3.0", features = ["print-defmt"] }
+rp2040-hal = { version="0.4.0", features=["rt"] }
+rp2040-boot2 = "0.2.0"
+defmt = "0.3.0"
+defmt-rtt = "0.3.0"
+embedded-hal ="1.0.0"
+panic-halt= "0.2.0"
+
+# this lets you use `cargo fix`!
+# [[bin]]
+# name = "app"
+# test = false
+# bench = false
+
+[profile.release]
+codegen-units = 1
+debug = false
+debug-assertions = false
+overflow-checks = false
+panic = 'abort'
+lto = true
+opt-level = "z"
+incremental = false
+strip = true
+
+[profile.dev]
+opt-level = 0
+debug = 2
+debug-assertions = true
+overflow-checks = true
+lto = false
+panic = 'unwind'
+incremental = true
+codegen-units = 256
+
+[profile.release.build-override]
+codegen-units = 8
+debug = false
+debug-assertions = false
+opt-level = 0
+overflow-checks = false
