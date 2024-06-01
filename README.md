@@ -1,9 +1,10 @@
 # Minimal pico(rp 2040) template
 
 Most 'templates' for the raspberry pico are rather involved and import many dependencies you might not want.
+
 This template aims to include only a couple of crates that I considered absolutely needed (if you don't want to write a bootloader yourself that is).
 
-The template is constructed to be used for a **single** pico, which is directly flashed over a usb connection.
+The template is constructed to be used for a **single pico**, which is directly flashed over a usb connection.
 
 To install this template run:
 ```bash
@@ -23,5 +24,6 @@ Make sure your pico is connected to your pc and ready to be flashed (connected w
 
 This template assumes that **you have a LED connected at gpio20**
 You can change that in the `src/bin/bin.rs` file.
+
 Also if you are using a **pico (H)** and not a **pico W(H)** then you can also use the **onboard LED**. 
 See the comments in the `bin.rs` to change to the onboard LED! 
