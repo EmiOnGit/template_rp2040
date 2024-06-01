@@ -4,7 +4,6 @@
 use core::panic::PanicInfo;
 
 use bsp::entry;
-use defmt_rtt as _;
 use embedded_hal::digital::OutputPin;
 
 // Provide an alias for our BSP so we can switch targets quickly.
