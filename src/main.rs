@@ -5,9 +5,9 @@ use core::panic::PanicInfo;
 
 use bsp::entry;
 use embedded_hal::digital::OutputPin;
+mod reg;
+mod time;
 
-// Provide an alias for our BSP so we can switch targets quickly.
-// Uncomment the BSP you included in Cargo.toml, the rest of the code does not need to change.
 use rp_pico as bsp;
 
 use bsp::hal::{
@@ -38,8 +38,8 @@ fn main() -> ! {
     .ok()
     .unwrap();
 
-    let mut delay = cortex_m::delay::Delay::new(core.SYST, clocks.system_clock.freq().to_Hz());
-
+    // let mut delay = cortex_m::delay::Delay::new(core.SYST, clocks.system_clock.freq().to_Hz());
+    let mut delay = time::Delay::new(core.SYST, clocks.system_clock.freq().to_Hz());
     let pins = bsp::Pins::new(
         pac.IO_BANK0,
         pac.PADS_BANK0,
