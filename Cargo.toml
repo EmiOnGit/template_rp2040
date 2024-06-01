@@ -1,7 +1,16 @@
 [package]
-name = "temp"
+name = "template_rp2040"
 version = "0.1.0"
 edition = "2021"
+# fix for rust-analyzer/cargo check!
+[[bin]]
+name = "bin"
+test = false
+bench = false
+[lib]
+name = "template_rp2040"
+test = false
+bench = false
 
 [dependencies]
 rp-pico = "0.9"
@@ -9,12 +18,6 @@ cortex-m = "0.7.7"
 cortex-m-rt = "0.7.3"
 rp2040-boot2 = "0.3.0"
 embedded-hal ="1.0.0"
-
-# this lets you use `cargo fix`!
-[[bin]]
-name = "bin"
-test = false
-bench = false
 
 [profile.release]
 codegen-units = 1
