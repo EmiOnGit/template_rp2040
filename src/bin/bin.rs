@@ -1,10 +1,5 @@
 #![no_std]
 #![no_main]
-#![deny(clippy::all)]
-#![warn(clippy::pedantic)]
-#![warn(clippy::restriction)]
-#![warn(clippy::nursery)]
-#![warn(clippy::cargo)]
 // we use the panic handler defined in lib.rs
 #[allow(unused_imports)]
 use template_rp2040::panic as _;
