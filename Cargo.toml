@@ -5,9 +5,9 @@ edition = "2021"
 
 [dependencies]
 rp-pico = "0.9"
-cortex-m = "0.7.3"
-cortex-m-rt = "0.7.0"
-rp2040-boot2 = "0.2.0"
+cortex-m = "0.7.7"
+cortex-m-rt = "0.7.3"
+rp2040-boot2 = "0.3.0"
 embedded-hal ="1.0.0"
 
 # this lets you use `cargo fix`!
