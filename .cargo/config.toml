@@ -5,7 +5,6 @@ target = "thumbv6m-none-eabi"        # Cortex-M0 and Cortex-M0+
 
 
 rustflags = [
- "-C", "linker=flip-link",
  "-C", "link-arg=--nmagic",
  "-C", "link-arg=-Tlink.x",
  "-C", "inline-threshold=5",
