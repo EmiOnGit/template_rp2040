@@ -3,6 +3,7 @@
 Most 'templates' for the raspberry pico are rather involved and import many dependencies you might not want.
 
 This template aims to include only a couple of crates that I considered absolutely needed (if you don't want to write a bootloader yourself that is).
+The end result should be a blinking LED.
 
 The template is constructed to be used for a **single pico**, which is directly flashed over a usb connection.
 
