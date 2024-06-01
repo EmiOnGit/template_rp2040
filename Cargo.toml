@@ -12,8 +12,8 @@ embedded-hal ="1.0.0"
 
 # this lets you use `cargo fix`!
 [[bin]]
-# name = "app"
-# test = false
+name = "bin"
+test = false
 bench = false
 
 [profile.release]
