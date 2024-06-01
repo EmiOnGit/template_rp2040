@@ -11,10 +11,10 @@ rp2040-boot2 = "0.3.0"
 embedded-hal ="1.0.0"
 
 # this lets you use `cargo fix`!
-# [[bin]]
+[[bin]]
 # name = "app"
 # test = false
-# bench = false
+bench = false
 
 [profile.release]
 codegen-units = 1
